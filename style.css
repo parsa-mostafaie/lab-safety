@@ -1,7 +1,8 @@
-/* استایل پایه */
-* {    
+/* Base */
+* {
   font-family: "Vazirmatn", "Inter", sans-serif;
   font-optical-sizing: auto;
+  font-feature-settings: "ss02";
 }
 
 body {
@@ -24,7 +25,7 @@ body {
   position: relative;
 }
 
-/* پنل امتیازات */
+/* Scoreboard */
 .score-board {
   display: flex;
   justify-content: space-between;
@@ -41,26 +42,30 @@ body {
   color: #2ecc71;
 }
 
-/* کانتینر عکس */
+/* Image */
 .image-container {
-  border: 3px dashed #f39c12;
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 20px auto; /* در وسط چین شده با فاصله از پایین */
+  border: 3px dashed #3498db;
   border-radius: 15px;
-  padding: 15px;
-  margin-bottom: 20px;
   background: #111;
-  min-height: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px; /* فضای خالی دور عکس */
+  box-sizing: border-box;
 }
 .image-container img {
   max-width: 100%;
-  max-height: 180px;
+  max-height: 100%;
+  object-fit: contain; /* حفظ تناسب تصویر بدون کشیدگی */
   transition: filter 0.3s ease;
   border-radius: 8px;
+  display: block;
 }
 
-/* کنترل‌ها */
+/* controls */
 .controls {
   display: flex;
   flex-direction: column;
@@ -119,7 +124,7 @@ button {
   pointer-events: none;
 }
 
-/* استایل توست (اعلان) */
+/* Toast */
 #toast {
   position: fixed;
   top: 20px;
@@ -154,7 +159,7 @@ button {
   border-color: #e74c3c;
 }
 
-.filter-toggle {
+.toggle {
   margin-top: 10px;
   font-size: 14px;
   color: #aaa;

@@ -1,4 +1,3 @@
-// داده‌ها و کلیدواژه‌های هوشمند
 const symbols = [
     { id: 1, name: 'سمی', keywords: ['سم'], image: 'toxic.png' },
     { id: 2, name: 'مواد خورنده', keywords: ['خورنده'], image: 'corrosive.png' },
@@ -19,18 +18,27 @@ const symbols = [
     { id: 17, name: 'دمای پایین', keywords: ['پایین', 'سرما'], image: 'low_temp.png' }
 ];
 
-// لیست فیلترهای عجیب و غریب و رندوم
 const filters = [
-    'blur(2px) contrast(150%)',
-    'hue-rotate(90deg) saturate(300%)',
-    'invert(1) sepia(1)',
-    'brightness(50%) contrast(200%)',
-    'blur(1px) drop-shadow(0 0 10px red)',
-    'grayscale(100%) invert(1)',
-    'hue-rotate(180deg) saturate(200%)',
-    'contrast(50%) blur(0.5px)',
-    'sepia(1) contrast(200%)',
-    'rotate(5deg) scale(1.1)'
+    'blur(4px) contrast(200%)',
+    'invert(1) sepia(1) hue-rotate(180deg)',
+    'brightness(40%) contrast(300%)',
+    'hue-rotate(90deg) saturate(1000%) contrast(50%)',
+    'grayscale(1) contrast(250%) brightness(60%)',
+    'contrast(10%) brightness(200%) invert(1)',
+    'blur(2px) invert(1) drop-shadow(0 0 15px magenta)',
+    'sepia(0.8) saturate(800%) hue-rotate(45deg)',
+    'brightness(150%) contrast(500%) saturate(0%)',
+    'drop-shadow(0 0 30px rgba(255, 0, 0, 0.9)) invert(0.8)',
+    'hue-rotate(180deg) blur(1.5px) brightness(80%)',
+    'contrast(600%) saturate(300%) invert(0.8)',
+    'sepia(1) contrast(200%) brightness(120%) blur(2px)',
+    'opacity(0.5) invert(1) hue-rotate(270deg)',
+    'saturate(2000%) contrast(20%)',
+    'grayscale(1) invert(1) blur(3px)',
+    'brightness(200%) contrast(50%) hue-rotate(135deg)',
+    'drop-shadow(10px 10px 20px cyan) invert(1) blur(1px)',
+    'hue-rotate(60deg) saturate(600%) contrast(200%) brightness(50%)',
+    'blur(5px) contrast(150%) sepia(0.7)'
 ];
 
 let currentQuestion = null;
@@ -119,17 +127,20 @@ function checkAnswer() {
     const normalizedCorrectName = normalize(currentQuestion.name);
 
     let isCorrect = normalizedCorrectName == normalizedUserAnswer;
-    //if (normalizedCorrectName.includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalizedCorrectName)) {
-    //    isCorrect = true;
-    //} else {
-    // بررسی کلمات کلیدی
-    //    for (let keyword of currentQuestion.keywords) {
-    //        if (normalize(keyword).includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalize(keyword))) {
-    //            isCorrect = true;
-    //            break;
-    //        }
-    //    }
-    //}
+    const isFulltext = document.getElementById('fullTextToggle').checked;
+
+    if (!isFulltext) {
+        if (normalizedCorrectName.includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalizedCorrectName)) {
+            isCorrect = true;
+        } else {
+            for (let keyword of currentQuestion.keywords) {
+                if (normalize(keyword).includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalize(keyword))) {
+                    isCorrect = true;
+                    break;
+                }
+            }
+        }
+    }
 
     // پردازش نتیجه
     if (isCorrect) {
@@ -181,5 +192,5 @@ document.getElementById('answerInput').addEventListener('keypress', function (e)
 
 window.onload = function () {
     resetGame();
-    showToast('تهیه‌کننده: پارسا مصطفائی', type="success")
+    showToast('تهیه‌کننده: پارسا مصطفائی', type = "success")
 };
