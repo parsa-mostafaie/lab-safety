@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Vazirmatn:wght@100..900&display=swap");
-
 /* استایل پایه */
-body {
-  font-family: "Vazirmatn", sans-serif;
+* {    
+  font-family: "Vazirmatn", "Inter", sans-serif;
   font-optical-sizing: auto;
+}
+
+body {
   background-color: #121212;
   color: #eee;
   display: flex;

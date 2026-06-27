@@ -40,7 +40,6 @@ let isAnswered = false;
 let pool = [];
 let autoTimer = null;
 
-// توابع کمکی
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -77,7 +76,6 @@ function toggleFilter() {
 }
 
 function loadQuestion() {
-    // پاک کردن تایمرهای قبلی
     clearTimeout(autoTimer);
 
     if (pool.length === 0) pool = shuffle([...symbols]);
@@ -116,12 +114,10 @@ function checkAnswer() {
         return;
     }
 
-    // نرمال‌سازی (حذف فاصله و کوچک کردن حروف)
     const normalize = (str) => str.replace(/\s/g, '').toLowerCase();
     const normalizedUserAnswer = normalize(userAnswer);
     const normalizedCorrectName = normalize(currentQuestion.name);
 
-    // منطق هوشمند برای تشخیص (کلمات کلیدی + تطابق جزئی)
     let isCorrect = normalizedCorrectName == normalizedUserAnswer;
     //if (normalizedCorrectName.includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalizedCorrectName)) {
     //    isCorrect = true;
@@ -151,7 +147,6 @@ function checkAnswer() {
     } else {
         wrongCount++;
         showToast(`❌ پاسخ شما نادرست است. پاسخ صحیح "${currentQuestion.name}" بود. دوباره تلاش کنید یا دکمه شروع مجدد را بزنید.`, "error", 4000);
-        // کاربر می‌تواند دوباره تایپ کند و دکمه را بزند
         input.focus();
         input.select();
     }
@@ -177,7 +172,6 @@ function updateScore() {
     document.getElementById('percentDisplay').textContent = percent + '%';
 }
 
-// هندل کردن کلید Enter در فیلد تایپ
 document.getElementById('answerInput').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         e.preventDefault();

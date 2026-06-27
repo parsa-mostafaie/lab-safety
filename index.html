@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>آزمون علائم ایمنی (نسخه هوشمند تایپی)</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,11 +26,11 @@
 
         <div class="controls">
             <div class="filter-toggle">
-                <label for="filterToggle">اعمال فیلترهای تصادفی</label>
+                <label for="filterToggle">اعمال فیلترهای تصادفی?</label>
                 <input type="checkbox" id="filterToggle" checked onchange="toggleFilter()">
             </div>
 
-            <input type="text" id="answerInput" placeholder="نام علامت را تایپ کنید (مثلا: سم، آتش، داغ...)" autocomplete="off" />
+            <input type="text" id="answerInput" placeholder="نام علامت را تایپ کنید" autocomplete="off" />
             
             <div class="button-group">
                 <button id="checkBtn" onclick="checkAnswer()">✅ بررسی پاسخ</button>
