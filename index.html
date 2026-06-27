@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آزمون علائم ایمنی (نسخه هوشمند تایپی)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- کانتینر توست -->
+    <div id="toast"></div>
+
+    <div class="container">
+        <h1>🧪 آزمون علائم ایمنی</h1>
+        <div class="score-board">
+            <span>صحیح: <span id="correctDisplay">0</span></span>
+            <span>غلط: <span id="wrongDisplay">0</span></span>
+            <span>درصد: <span id="percentDisplay">0%</span></span>
+        </div>
+
+        <div class="image-container" id="imageContainer">
+            <img id="symbolImg" src="" alt="نماد ایمنی" />
+        </div>
+
+        <div class="controls">
+            <div class="filter-toggle">
+                <label for="filterToggle">اعمال فیلترهای تصادفی</label>
+                <input type="checkbox" id="filterToggle" checked onchange="toggleFilter()">
+            </div>
+
+            <input type="text" id="answerInput" placeholder="نام علامت را تایپ کنید (مثلا: سم، آتش، داغ...)" autocomplete="off" />
+            
+            <div class="button-group">
+                <button id="checkBtn" onclick="checkAnswer()">✅ بررسی پاسخ</button>
+                <button id="resetBtn" onclick="resetGame()">🔄 شروع مجدد</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
